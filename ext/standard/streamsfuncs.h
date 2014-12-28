@@ -41,6 +41,7 @@ PHP_FUNCTION(stream_set_write_buffer);
 PHP_FUNCTION(stream_set_chunk_size);
 PHP_FUNCTION(stream_get_transports);
 PHP_FUNCTION(stream_get_wrappers);
+PHP_FUNCTION(stream_wrapper_exists);
 PHP_FUNCTION(stream_get_line);
 PHP_FUNCTION(stream_get_meta_data);
 PHP_FUNCTION(stream_wrapper_register);

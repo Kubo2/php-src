@@ -574,6 +574,26 @@ PHP_FUNCTION(stream_get_wrappers)
 }
 /* }}} */
 
+/** {{{ proto bool stream_wrapper_exists( string $wrapperProtocol )
+ *   Determine whether wrapper is already registered or not */
+PHP_FUNCTION(stream_wrapper_exists) {
+	zend_string *protocol;
+
+	if(zend_parse_parameters(ZEND_NUM_ARGS(), "S", &protocol) != SUCCESS) {
+		return;
+	}
+
+	if(zend_hash_exists(php_stream_get_url_stream_wrappers_hash(), protocol)) {
+		/** Wrapper exists.  */
+		RETURN_TRUE;
+	}
+
+	/** Wrapper does not exist.  */
+	RETURN_FALSE;
+
+}
+/* }}} */
+
 /* {{{ stream_select related functions */
 static int stream_array_to_fd_set(zval *stream_array, fd_set *fds, php_socket_t *max_fd)
 {
